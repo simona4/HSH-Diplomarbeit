@@ -194,7 +194,7 @@ public class DataWrapper {
    
    /**
     * 
-    * @param posF1, das Fensterrollo2 oeffnen oder schliessen
+    * @param posF2, das Fensterrollo2 oeffnen oder schliessen
     * @return den Wert von dem Fensterrollo 
     */
    public synchronized int setPosF2(int posF2){

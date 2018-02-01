@@ -126,6 +126,10 @@ public class SmartHomeServer extends Thread {
                         pW.flush();
                         Thread.sleep(100);
                     }
+                    else {
+                        pW.println("get_denied");
+                        pW.flush();
+                    }
                 } else if (split1[0].matches(".*logout.*")) {
                     if (login) {
                         pW.println("logout_successful");
