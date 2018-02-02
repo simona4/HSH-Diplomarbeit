@@ -25,14 +25,13 @@ public class Server {
 
     /**
      * Hier werden die Ports geöffnet, die die Verbindung mit den Clients
-     * ermöglichen
-     * 50001: für die SWING- und Web Clients
+     * ermöglichen 50001: für die SWING- und Web Clients
      */
     public static final int PORT = 50001;
     public static final int PORT1 = 50004;
 
     /**
-     * 
+     * neue Instanzvariablen für jede Klasse und die Sockets erstellt
      */
     DataWrapper dW;
     SmartHomeServer sH;
@@ -48,6 +47,13 @@ public class Server {
         new Server().runServer();
     }
 
+    /**
+     * in der run-Methode werden neue Instanzen für die andere Klassen erstellt
+     * hier startet der Thread, der für die Verbindung mit dem Arduino zuständig
+     * ist
+     *
+     * @throws IOException
+     */
     public void runServer() throws IOException {
 
         SocketFactory newSF = SSLSocketFactory.getDefault();
@@ -59,6 +65,10 @@ public class Server {
         HomeServerHandler hsh = new HomeServerHandler(s1, dW, PORT1);
         hsh.start();
 
+        /**
+         * in dieser while-Schleife startet nur die Verbindung mit den SWING-
+         * und WEB Clients
+         */
         while (true) {
             Socket socket = s.accept();
             new ServerThread(dW, socket).start();
