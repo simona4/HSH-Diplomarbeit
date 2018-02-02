@@ -16,14 +16,24 @@ import java.util.Scanner;
 import javax.net.SocketFactory;
 
 /**
+ * Das ist die Main-Klasse. Sie enthält die allerwichtigsten Verbindungen und
+ * Methoden
  *
  * @author Simona
  */
 public class Server {
 
+    /**
+     * Hier werden die Ports geöffnet, die die Verbindung mit den Clients
+     * ermöglichen
+     * 50001: für die SWING- und Web Clients
+     */
     public static final int PORT = 50001;
     public static final int PORT1 = 50004;
 
+    /**
+     * 
+     */
     DataWrapper dW;
     SmartHomeServer sH;
     ServerThread sT;
@@ -52,7 +62,7 @@ public class Server {
         while (true) {
             Socket socket = s.accept();
             new ServerThread(dW, socket).start();
-            
+
         }
     }
 
