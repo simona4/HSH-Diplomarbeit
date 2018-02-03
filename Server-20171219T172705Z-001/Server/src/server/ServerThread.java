@@ -111,7 +111,7 @@ public class ServerThread extends Thread {
                  * Diese Geräte haben verschiedene Werte: 1 ist für Einschalten,
                  * 0 ist für Ausschalten Die Geräte, die mehr als zwei Werte
                  * haben, haben einen Option mehr Alle diese Werte werden zu den
-                 * Clients geschikt und im Bidschirm ausgegeben Wenn die
+                 * Clients geschikt und im Bidschirm ausgegeben. Wenn die
                  * Get-Anfrage nicht erfolgreich ist, sendet der Server
                  * get_denied an die Clients zurück
                  */
@@ -210,8 +210,8 @@ public class ServerThread extends Thread {
                     }
                 } /**
                  * Die Clients möchten am Ende abmelden. Um diesen Aktion
-                 * erfolgreich zu machen, schicken sie "logout" Dieser Gesuch
-                 * kann entweder in Ordnung oder nicht sein Der Server stellt
+                 * erfolgreich zu machen, schicken sie "logout". Dieser Gesuch
+                 * kann entweder in Ordnung oder nicht sein. Der Server stellt
                  * fest, ob er das annehmen kann oder nicht
                  */
                 else if (split[0].matches(".*logout.*")) {
@@ -236,7 +236,7 @@ public class ServerThread extends Thread {
             }
             /**
              * Der PrintWriter, der BufferedReader und der Socket werden hier
-             * geschlossen Das Prozess ist fertig
+             * geschlossen. Das Prozess ist fertig
              */
             pW.close();
             bR.close();
