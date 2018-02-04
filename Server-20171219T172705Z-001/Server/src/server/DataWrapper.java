@@ -374,7 +374,7 @@ public class DataWrapper {
         /**
          * Der Server erstellt ein Array und teilt die Nachricht in Positionen
          * ein. In einer Position kommt der Name des Bauteils, in der anderen
-         * Position kommt das Wert des Bauteils. Die Bauteile werden von dem
+         * Position kommt der Wert des Bauteils. Die Bauteile werden von dem
          * Datentyp String in einem Integer umgewandelt, damit der Arduino sie
          * einlesen kann die Werte der Bauteile werden geändert
          */
