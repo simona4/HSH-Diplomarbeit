@@ -223,7 +223,7 @@ public class ServerThread extends Thread {
                         pW.println("logout_unsuccessful");
                     }
                     pW.flush();
-                    doWork = false;
+                    doWork = false; //der Prozess ist beendet
                 } /**
                  * Falls die Clients irgendwas hineinschreiben oder eine
                  * sinnlose Anfrage an dem Server machen, antwortet der Server

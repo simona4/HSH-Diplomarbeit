@@ -52,7 +52,7 @@ public class Server {
      * hier startet der Thread, der für die Verbindung mit dem Arduino zuständig
      * ist
      *
-     * @throws IOException
+     * @throws IOException, keine Input/Output-Fehler
      */
     public void runServer() throws IOException {
 

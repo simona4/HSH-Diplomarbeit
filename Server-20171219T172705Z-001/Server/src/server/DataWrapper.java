@@ -410,12 +410,15 @@ public class DataWrapper {
          * der aktuelle Status wird in der Datenbank aktualisiert
          */
         try {
-            String sql = "INSERT INTO geraete (Geraetenname, Status) " + "VALUES(?, ?)";
+            String sql = "INSERT INTO action_log (, Status) " + "VALUES(?, ?)";
             stmt = (Statement) con.createStatement();
             int result = stmt.executeUpdate(sql);
         } catch (NullPointerException e) {
             System.out.println("Error");
             return false;
+        }
+        catch (SQLException p){
+            
         }
 
         return true;
