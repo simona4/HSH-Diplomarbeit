@@ -114,7 +114,7 @@ public class ServerThread extends Thread {
                  * Clients geschikt und im Bidschirm ausgegeben. Wenn die
                  * Get-Anfrage nicht erfolgreich ist, sendet der Server
                  * get_denied an die Clients zurück
-                 */
+                 */ 
                 else if (m.matches(".*Get.*")) {
                     if (login) {
                         pW.println("get_accepted");
