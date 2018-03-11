@@ -12,7 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.sql.*;
-import org.mindrot.jbcrypt.BCrypt;
+import java.*;
+
 
 
 /*
@@ -405,12 +406,13 @@ public class DataWrapper {
         setHg(hg);
         setKa(ka);
         setVentilator(vnt);
-
+        
         /**
          * der aktuelle Status wird in der Datenbank aktualisiert
          */
         try {
-            String sql = "INSERT INTO action_log (, Status) " + "VALUES(?, ?)";
+            String sql = "INSERT INTO geraete(Led1, Led2, Led3, Led4, Led5, Fensterrollo 1, Fensterrollo 2, Garagentor, Tür, Heizungsgerät, Klimaanlage, id_user)" 
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             stmt = (Statement) con.createStatement();
             int result = stmt.executeUpdate(sql);
         } catch (NullPointerException e) {

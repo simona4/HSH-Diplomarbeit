@@ -29,6 +29,7 @@ public class Server {
      */
     public static final int PORT = 50001;
     public static final int PORT1 = 50004;
+    public static final int PORT2 = 50005;
 
     /**
      * neue Instanzvariablen für jede Klasse und die Sockets erstellt
