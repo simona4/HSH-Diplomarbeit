@@ -5,6 +5,7 @@
  */
 package server;
 
+import com.sun.net.ssl.internal.ssl.Provider;
 import javax.net.ssl.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +15,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.Scanner;
 import javax.net.SocketFactory;
+import java.security.Security;
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
+
 
 /**
  * Das ist die Main-Klasse. Sie enthält die allerwichtigsten Verbindungen und
@@ -39,6 +45,7 @@ public class Server {
     ServerThread sT;
     Socket socket;
     Socket socket1;
+    Socket s;
 
     /**
      * @param args the command line arguments
@@ -57,14 +64,32 @@ public class Server {
      */
     public void runServer() throws IOException {
 
-        SocketFactory newSF = SSLSocketFactory.getDefault();
+              
         dW = new DataWrapper();
         ServerSocket s = new ServerSocket(PORT);
         ServerSocket s1 = new ServerSocket(PORT1);
+        SSLServerSocket sslServerSocket;
+        
+        Security.addProvider(new Provider());
+        System.setProperty("javax.net.ssl.keyStore","c:\\keys\\myKeyStore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "123456");
+        
+        try {
+            SSLServerSocketFactory factory = 
+              (SSLServerSocketFactory)SSLServerSocketFactory.getDefault();
+            sslServerSocket = 
+              (SSLServerSocket)factory.createServerSocket(PORT2);
+            
+            SSLSocketHandler ssl = new SSLSocketHandler(sslServerSocket, dW, PORT2);
+            ssl.start();
+            
+        } catch(Exception e) { System.out.println("ssl server socket fehler"); }
+        
         System.out.println("Der Server ist eingeschaltet und bereit für Verbindungen...");
 
         HomeServerHandler hsh = new HomeServerHandler(s1, dW, PORT1);
         hsh.start();
+
 
         /**
          * in dieser while-Schleife startet nur die Verbindung mit den SWING-

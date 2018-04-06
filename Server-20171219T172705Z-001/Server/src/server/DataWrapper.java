@@ -92,16 +92,16 @@ public class DataWrapper {
     public void initializeTestConfig() {
         led1 = 0;
         led2 = 0;
-        led3 = 1;
-        led4 = 1;
+        led3 = 0;
+        led4 = 0;
         led5 = 0;
-        posF1 = 1;
+        posF1 = 0;
         posF2 = 0;
-        posG = 1;
+        posG = 0;
         posT = 0;
-        hg = 1;
+        hg = 0;
         ka = 0;
-        vnt = 1;
+        vnt = 0;
     }
 
     /**
@@ -370,7 +370,7 @@ public class DataWrapper {
      * @throws SQLException, damit kein Fehler mit der Interaktion der Daten
      * passiert
      */
-    public boolean updateState(String m) throws SQLException {
+    public boolean updateState(String m, String user) throws SQLException {
         System.out.println(m);
         /**
          * Der Server erstellt ein Array und teilt die Nachricht in Positionen
@@ -411,22 +411,31 @@ public class DataWrapper {
          * der aktuelle Status wird in der Datenbank aktualisiert
          */
         try {
-            String sql = "INSERT INTO geraete(Led1, Led2, Led3, Led4, Led5, Fensterrollo 1, Fensterrollo 2, Garagentor, Tür, Heizungsgerät, Klimaanlage, id_user)" 
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "SELECT * FROM user WHERE username=\"" + user+"\"";
+            stmt =(Statement) con.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql);
+            resultSet.next();
+            String uid = resultSet.getString("id_user");
+            System.out.println("user mit id " + uid + " schickt ein update");
+            
+            sql = "INSERT INTO geraete(Led1, Led2, Led3, Led4, Led5, Fensterrollo1, Fensterrollo2, Garagentor, Tuer, Heizungsgeraet, Klimaanlage, Ventilator, id_user)" 
+                    + "VALUES("+ led1 +", "+ led2 + ", "+ led3 +", "+ led4 +", "+ led5 +", "+ posF1 +", "+ posF2 +", "+ posG +", "+ posT +", "+ hg +", "+ ka +", "+ vnt +", "+ uid + ")";
             stmt = (Statement) con.createStatement();
             int result = stmt.executeUpdate(sql);
+            System.out.println("Rows affected: " + result);
         } catch (NullPointerException e) {
             System.out.println("Error");
             return false;
         }
         catch (SQLException p){
-            
+            p.printStackTrace(); 
         }
 
         return true;
     }
 
     /**
+     * 
      * Mit der getState-Methode bekommen die Clients den aktuellen Status des
      * Hauses
      *

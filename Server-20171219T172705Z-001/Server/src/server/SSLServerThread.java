@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.net.ssl.SSLSocket;
 
 /**
  * Diese Klasse ist für die Verbindung mit den SWING- und Web Client
@@ -21,10 +22,9 @@ import java.util.logging.Logger;
  *
  * @author Simona
  */
-public class ServerThread extends Thread {
-    
+public class SSLServerThread extends Thread {
 
-    Socket socket; //deklariert eine neue Variale mit dem Namen Socket
+    SSLSocket socket; //deklariert eine neue Variale mit dem Namen Socket
     DataWrapper dW; //deklariert eine neue Instanzvariable mit dem Namen DataWrapper
 
     PrintWriter pW; //Instantzvariable mit dem Namen PrintWriter
@@ -39,7 +39,7 @@ public class ServerThread extends Thread {
      * @param socket, gibt das Socket
      * @param dW, hier steht die Instanzvariable für die DataWrapper-Klasse
      */
-    public ServerThread(DataWrapper dW, Socket socket) {
+    public SSLServerThread(DataWrapper dW, SSLSocket socket) {
         this.dW = dW;
         this.socket = socket;
     }
