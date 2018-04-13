@@ -411,12 +411,12 @@ public class DataWrapper {
          * der aktuelle Status wird in der Datenbank aktualisiert
          */
         try {
-            String sql = "SELECT * FROM user WHERE username=\"" + user+"\"";
+            String sql = "SELECT * FROM user WHERE username=\"" + user +"\"";
             stmt =(Statement) con.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
             resultSet.next();
             String uid = resultSet.getString("id_user");
-            System.out.println("user mit id " + uid + " schickt ein update");
+            System.out.println("User mit der ID " + uid + " schickt ein Update");
             
             sql = "INSERT INTO geraete(Led1, Led2, Led3, Led4, Led5, Fensterrollo1, Fensterrollo2, Garagentor, Tuer, Heizungsgeraet, Klimaanlage, Ventilator, id_user)" 
                     + "VALUES("+ led1 +", "+ led2 + ", "+ led3 +", "+ led4 +", "+ led5 +", "+ posF1 +", "+ posF2 +", "+ posG +", "+ posT +", "+ hg +", "+ ka +", "+ vnt +", "+ uid + ")";
