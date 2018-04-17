@@ -160,29 +160,29 @@ public class ServerThread extends Thread {
                         } else {
                             strled5 = "led5:0";
                         }
-                        if (dW.getPosF1() == 90) {
-                            strposF1 = "posF1:90";
-                        } else if (dW.getPosF1() == 180) {
-                            strposF1 = "posF1:180";
+                        if (dW.getPosF1() == 25) {
+                            strposF1 = "posF1:25";
+                        } else if (dW.getPosF1() == 50) {
+                            strposF1 = "posF1:50";
                         } else {
                             strposF1 = "posF1:0";
                         }
-                        if (dW.getPosF2() == 90) {
-                            strposF2 = "posF2:90";
-                        } else if (dW.getPosF2() == 180) {
-                            strposF2 = "posF2:180";
+                        if (dW.getPosF2() == 25) {
+                            strposF2 = "posF2:25";
+                        } else if (dW.getPosF2() == 50) {
+                            strposF2 = "posF2:50";
                         } else {
                             strposF2 = "posF2:0";
                         }
-                        if (dW.getPosG() == 180) {
-                            strposG = "posG:180";
+                        if (dW.getPosG() == 80) {
+                            strposG = "posG:80";
                         } else {
-                            strposG = "posG:0";
+                            strposG = "posG:170";
                         }
-                        if (dW.getPosT() == 90) {
-                            strposT = "posT:90";
+                        if (dW.getPosT() == 40) {
+                            strposT = "posT:40";
                         } else {
-                            strposT = "posT:0";
+                            strposT = "posT:150";
                         }
                         if (dW.getHg() == 1) {
                             strhg = "hg:1";
